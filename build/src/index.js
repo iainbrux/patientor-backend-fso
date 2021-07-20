@@ -5,6 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
+const diagnoses_1 = __importDefault(require("./routes/diagnoses"));
+const patients_1 = __importDefault(require("./routes/patients"));
 const app = express_1.default();
 app.use(express_1.default.json());
 // eslint-disable-next-line @typescript-eslint/no-unsafe-call
@@ -13,6 +15,8 @@ app.get('/api/ping', (_req, res) => {
     console.log('Are we playing tennis?');
     res.status(200).send('Pong!').end();
 });
+app.use('/api/diagnoses', diagnoses_1.default);
+app.use('/api/patients', patients_1.default);
 const PORT = 3003;
 app.listen(PORT, () => {
     console.log('Server started on port 3003.');

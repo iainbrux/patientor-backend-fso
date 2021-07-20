@@ -13,5 +13,11 @@ export type PatientData = {
   occupation: string;
 };
 
-export type NonSensitiviePatientData = Omit<PatientData, 'ssn'>;
+export enum Gender {
+  Male = 'male',
+  Female = 'female',
+  Other = 'other'
+}
 
+export type NonSensitiviePatientData = Omit<PatientData, 'ssn'>;
+export type NewPatientEntry = Omit<PatientData, 'id'>;
